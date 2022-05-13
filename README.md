@@ -13,4 +13,4 @@ cd bin
 ./go
 ```
 
-produces pdf with a few graphs and a report>
+produces pdf with a few graphs and a report.
