@@ -1,0 +1,19 @@
+# create header for csv file
+
+mkdir -p ../tmp
+mkdir -p ../input
+mkdir -p ../output
+
+rm ../tmp/*
+rm ../output/*
+
+grep "INFO oven: temp=" ../input/daemon.log|head -1|sed 's/.*INFO oven: //'|sed -E 's/[0-9|\.|=|-| ]//g' > ../tmp/data.csv
+grep "INFO oven: temp=" ../input/daemon.log|sed 's/.*INFO oven: //'|sed 's/[a-z|_|=| ]//g' >> ../tmp/data.csv
+
+cat go.sql| sqlite ../tmp/kiln.db
+
+python ./temp-time.py
+python ./error-time.py 
+python ./heat-time.py 
+
+python ./combine-pdfs.py ../output
