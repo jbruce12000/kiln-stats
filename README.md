@@ -13,4 +13,4 @@ cd bin
 ./go
 ```
 
-produces pdf with a few graphs and a report.
+produces [pdf with a few graphs](https://github.com/jbruce12000/kiln-stats/blob/main/output/final.pdf) and a report.
