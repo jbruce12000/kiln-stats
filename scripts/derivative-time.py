@@ -18,16 +18,14 @@ def add_text(fig,strings):
 
 
 infile = '../tmp/temps_over_time.csv'
-outfile = '../output/sortb-error_time.pdf'
-title = "Error for kiln run"
-
-#subtext = "Given our linear growth rate over the past year, Manheim will spend 15.87M in 2022 (2.67M over budget of 13.2M)"
+outfile = '../output/sortf-derivative_time.pdf'
+title = "Derivative for kiln run"
 
 df = pd.read_csv(infile)
 
 #df['Date'] = pd.to_datetime(df['date'])
 
-fig = px.scatter(df, x='Time', y='Error', title=title, width=1000, height=600)
+fig = px.scatter(df, x='Time', y='Derivative',  title=title, width=1000, height=600)
 fig.update_layout(title_x=0.5)
 fig.update_traces(marker_size=3)
 

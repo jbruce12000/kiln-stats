@@ -31,4 +31,4 @@ select max(cast(temp as float)) as max_temperature from kiln;
 
 .output ../tmp/temps_over_time.csv
 .mode csv
-select temp as Temperature,target as Target,error as Error,heat_on as Heat,p as Proportional, i as Integral, d as derivative, run_time as Time from kiln;
+select temp as Temperature,target as Target,error as Error,heat_on as Heat,p as Proportional, i as Integral, d as Derivative, run_time as Time from kiln;

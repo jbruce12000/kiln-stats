@@ -18,7 +18,7 @@ def add_text(fig,strings):
 
 
 infile = '../tmp/temps_over_time.csv'
-outfile = '../output/sortc_heat_time.pdf'
+outfile = '../output/sortc-heat_time.pdf'
 title = "Elements on per Duty Cycle for kiln run"
 
 #subtext = "Given our linear growth rate over the past year, Manheim will spend 15.87M in 2022 (2.67M over budget of 13.2M)"

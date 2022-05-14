@@ -16,5 +16,7 @@ python ./temp-time.py
 python ./error-time.py 
 python ./heat-time.py 
 python ./integral-time.py 
+python ./proportional-time.py 
+python ./derivative-time.py 
 
 python ./combine-pdfs.py ../output

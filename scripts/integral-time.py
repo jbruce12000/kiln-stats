@@ -18,7 +18,7 @@ def add_text(fig,strings):
 
 
 infile = '../tmp/temps_over_time.csv'
-outfile = '../output/sortd_integral_time.pdf'
+outfile = '../output/sorte-integral_time.pdf'
 title = "Integral Accumulation for kiln run"
 
 df = pd.read_csv(infile)
