@@ -29,6 +29,7 @@ df = pd.read_csv(infile)
 
 fig = px.scatter(df, x='Time', y='Heat', title=title, width=1000, height=600)
 fig.update_layout(title_x=0.5)
+fig.update_traces(marker_size=3)
 
 fig.update_layout(legend=dict(
     orientation="h",

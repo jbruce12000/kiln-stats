@@ -8,8 +8,9 @@ create table out_of_window as select run_time,count(*) from kiln group by run_ti
 .output ../tmp/reports.txt
 select * from kiln a, out_of_window b where a.run_time=b.run_time;
 
-# remove the first log entry
+# remove the first and last log entry
 delete from kiln where run_time=0;
+delete from kiln where time_left=0;
 
 # run time
 select max(cast(run_time as integer))/3600 as run_hours from kiln;
@@ -30,4 +31,4 @@ select max(cast(temp as float)) as max_temperature from kiln;
 
 .output ../tmp/temps_over_time.csv
 .mode csv
-select temp as Temperature,target as Target,error as Error,heat_on as Heat, run_time as Time from kiln;
+select temp as Temperature,target as Target,error as Error,heat_on as Heat,p as Proportional, i as Integral, d as derivative, run_time as Time from kiln;

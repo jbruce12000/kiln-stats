@@ -15,5 +15,6 @@ cat go.sql| sqlite ../tmp/kiln.db
 python ./temp-time.py
 python ./error-time.py 
 python ./heat-time.py 
+python ./integral-time.py 
 
 python ./combine-pdfs.py ../output

@@ -27,8 +27,9 @@ df = pd.read_csv(infile)
 
 #df['Date'] = pd.to_datetime(df['date'])
 
-fig = px.scatter(df, x='Time', y='Temperature', title=title, width=1000, height=600)
+fig = px.scatter(df, x='Time', y='Temperature',  title=title, width=1000, height=600)
 fig.update_layout(title_x=0.5)
+fig.update_traces(marker_size=3)
 
 fig.update_layout(legend=dict(
     orientation="h",
