@@ -11,12 +11,13 @@ select * from kiln a, out_of_window b where a.run_time=b.run_time;
 # remove the first and last log entry
 delete from kiln where run_time=0;
 delete from kiln where time_left=0;
+update kiln set d=0 where abs(d)>100;
 
 # run time
 select max(cast(run_time as integer))/3600 as run_hours from kiln;
 
 # average error
-select avg(error) as average_error from kiln;
+select avg(abs(error)) as average_error from kiln;
 
 # heat_on time for cost calculation
 # 9640W for all elements
