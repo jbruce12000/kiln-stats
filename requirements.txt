@@ -3,3 +3,4 @@ kaleido
 numpy
 pandas
 python-slugify
+statsmodels
