@@ -21,13 +21,9 @@ infile = '../tmp/temps_over_time.csv'
 outfile = '../output/sortb-error_time.pdf'
 title = "Error for kiln run"
 
-#subtext = "Given our linear growth rate over the past year, Manheim will spend 15.87M in 2022 (2.67M over budget of 13.2M)"
-
 df = pd.read_csv(infile)
 
-#df['Date'] = pd.to_datetime(df['date'])
-
-fig = px.scatter(df, x='Time', y='Error', title=title, width=1000, height=600)
+fig = px.scatter(df, x='Time', y='Error', title=title, width=1000, height=600, trendline="lowess", trendline_options=dict(frac=0.1),trendline_color_override="red")
 fig.update_layout(title_x=0.5)
 fig.update_traces(marker_size=3)
 
