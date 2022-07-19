@@ -13,6 +13,9 @@ delete from kiln where run_time=0;
 delete from kiln where time_left=0;
 update kiln set d=0 where abs(d)>100;
 
+# invert error
+update kiln set error=error*-1.0;
+
 # run time
 select max(cast(run_time as integer))/3600 as run_hours from kiln;
 
