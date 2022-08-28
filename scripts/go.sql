@@ -4,7 +4,7 @@
 
 # get data for everything outside of the PID control window
 create table out_of_window as select run_time,count(*) from kiln group by run_time having count(*)>1;
-.mode column
+.mode box
 .output ../tmp/reports.txt
 select * from kiln a, out_of_window b where a.run_time=b.run_time;
 
