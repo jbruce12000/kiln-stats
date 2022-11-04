@@ -14,7 +14,7 @@ while(<>) {
     $record=0;
     }
 
-  if($_=~/cmd...RUN/) {
+  if($_=~/Running schedule/) {
     $x++;
     $record=1;
     }
