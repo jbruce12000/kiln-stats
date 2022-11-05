@@ -11,7 +11,7 @@ libatlas-base-dev only needed if you plan to run this on a raspberry pi.
 sudo apt-get install sqlite3 pdftk libatlas-base-dev
 sudo ln -s /usr/bin/sqlite3 /usr/bin/sqlite
 git clone git@github.com:jbruce12000/kiln-stats.git
-python3 -m venv
+python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 cd scripts
