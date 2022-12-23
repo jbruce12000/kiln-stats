@@ -12,14 +12,14 @@ select * from kiln a, out_of_window b where a.run_time=b.run_time;
 delete from kiln where run_time=0;
 delete from kiln where time_left=0;
 update kiln set d=0 where abs(d)>100;
-delete from kiln where error/1.0 > 500;
-delete from kiln where error/1.0 < -500;
+delete from kiln where error/1.0 > 50;
+delete from kiln where error/1.0 < -50;
 
 # invert error
 update kiln set error=error*-1.0;
 
 # run time
-select max(cast(run_time as integer))/3600 as run_hours from kiln;
+select printf("%0.2f",max(run_time/1.0)/3600) as run_hours from kiln;
 
 # average error
 select avg(abs(error)) as average_error from kiln;
@@ -27,10 +27,10 @@ select avg(abs(error)) as average_error from kiln;
 # heat_on time for cost calculation
 # 9640W for all elements
 # .056582 per kwh from ga power
-select (sum(heat_on)/3600)*9.640*.056582 as total_cost from kiln;
+select printf("%0.2f",(sum(heat_on)/3600)*9.640*.056582) as total_cost from kiln;
 
 # what percent of the time where elements on?
-select avg(heat_on/(heat_off+heat_on))*100 as elements_on_percent from kiln;
+select printf("%0.2f",avg(heat_on/(heat_off+heat_on))*100) as elements_on_percent from kiln;
 
 # max temp
 select max(cast(temp as float)) as max_temperature from kiln;
