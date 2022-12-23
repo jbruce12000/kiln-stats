@@ -35,5 +35,13 @@ fig.update_layout(legend=dict(
 ))
 fig.update_layout(legend={'title_text':''})
 
+fig.update_layout(
+    xaxis = dict(
+        tickmode = 'array',
+        tickvals = [ x*3600 for x in range(48) ],
+        ticktext = [ x for x in range(48) ]
+    )
+)
+
 fig.write_image(outfile)
 

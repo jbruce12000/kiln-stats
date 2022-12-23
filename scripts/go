@@ -7,6 +7,7 @@ mkdir -p ../output
 rm ../tmp/*
 rm ../output/*
 
+# need both lines here. one for header. other for data.
 grep "INFO oven: temp=" ../input/daemon.log|head -1|sed 's/.*INFO oven: //'|sed 's/[0-9|\.|=| ]//g'|sed 's/\-//g' > ../tmp/data.csv
 grep "INFO oven: temp=" ../input/daemon.log|sed 's/.*INFO oven: //'|sed 's/[a-z|_|=| ]//g' >> ../tmp/data.csv
 
