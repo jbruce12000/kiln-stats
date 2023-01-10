@@ -19,10 +19,12 @@ delete from kiln where error/1.0 < -50;
 # this works, but its really jumpy because my tc jumps in 1/2 degree increments
 # it is super slow because of the subselect to populate temp data from 60s ago
 #alter table kiln add column heat_60;
+#alter table kiln add column heat_120;
 #alter table kiln add column heat_rate;
-#update kiln set heat_60 = (select b.temp from kiln b where b.run_time=kiln.run_time-60);
-#update kiln set heat_60 = (select b.temp from kiln b where (b.run_time/1.0)<=((kiln.run_time-60)/1.0) order by b.run_time/1.0 desc limit 1);
-#update kiln set heat_rate = (temp-heat_60)*60;
+#update kiln set heat_60 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0) and (b.run_time/1.0)>((kiln.run_time/1.0)-60));
+#update kiln set heat_120 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0)-60 and (b.run_time/1.0)>(kiln.run_time/1.0)-120);
+#update kiln set heat_rate=(heat_60-heat_120)*60;
+
 
 # invert error
 update kiln set error=error*-1.0;
