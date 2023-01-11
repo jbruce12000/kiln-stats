@@ -21,10 +21,12 @@ delete from kiln where error/1.0 < -50;
 #alter table kiln add column heat_60;
 #alter table kiln add column heat_120;
 #alter table kiln add column heat_rate;
-#update kiln set heat_60 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0) and (b.run_time/1.0)>((kiln.run_time/1.0)-60));
-#update kiln set heat_120 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0)-60 and (b.run_time/1.0)>(kiln.run_time/1.0)-120);
-#update kiln set heat_rate=(heat_60-heat_120)*60;
 
+# take average temp now
+update kiln set heat_60 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0)+30 and (b.run_time/1.0)>((kiln.run_time/1.0)-30));
+# take average temp 60 secs ago
+update kiln set heat_120 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0)-30 and (b.run_time/1.0)>(kiln.run_time/1.0)-90);
+update kiln set heat_rate=(heat_60-heat_120)*60;
 
 # invert error
 update kiln set error=error*-1.0;
