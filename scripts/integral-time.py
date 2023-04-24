@@ -1,7 +1,6 @@
 import plotly.express as px
 import pandas as pd
 import plotly.io as pio
-pio.kaleido.scope.mathjax = None
 
 def add_text(fig,strings):
     text = ''.join(strings)
@@ -19,7 +18,7 @@ def add_text(fig,strings):
 
 infile = '../tmp/temps_over_time.csv'
 outfile = '../output/sorte-integral_time.pdf'
-title = "Integral Accumulation for kiln run"
+title = "Integral Accumulation for run"
 
 df = pd.read_csv(infile)
 

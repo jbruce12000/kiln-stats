@@ -18,9 +18,11 @@ delete from kiln where error/1.0 < -50;
 # heat_rate
 # this works, but its really jumpy because my tc jumps in 1/2 degree increments
 # it is super slow because of the subselect to populate temp data from 60s ago
-#alter table kiln add column heat_60;
-#alter table kiln add column heat_120;
-#alter table kiln add column heat_rate;
+alter table kiln add column heat_60;
+alter table kiln add column heat_120;
+alter table kiln add column heat_rate;
+
+create index rt on kiln(run_time);
 
 # take average temp now
 update kiln set heat_60 = (select avg(b.temp) from kiln b where (b.run_time/1.0)<= (kiln.run_time/1.0)+30 and (b.run_time/1.0)>((kiln.run_time/1.0)-30));
@@ -36,6 +38,9 @@ select printf("%0.2f",max(run_time/1.0)/3600) as run_hours from kiln;
 
 # average error
 select avg(abs(error)) as average_error from kiln;
+
+# average error minus doors open
+select avg(abs(error)) as average_error_doors_closed from kiln where abs(error) < 20;
 
 # heat_on time for cost calculation
 # 9640W for all elements
